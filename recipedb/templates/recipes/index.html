@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'tailwind.css' %}">
+</head>
+<body class="bg-slate-300">
+
+<div class="p-8">
+  <h1 class="text-xl font-bold">Der unendliche Speiseplan</h1>
+  <a class="text-xs" href="#week-{{current_week}}">→ Aktuelle Woche</a>
+</div>
+
+{% for week in weeks %}
+<div class="px-8 py-4 {% if week.is_current %}bg-amber-200{% endif %}">
+<h2 class="font-bold pl-6"><a name="week-{{week.weeknumber}}">Woche {{ week.weeknumber }}</a></h2>
+<div class="flex flex-wrap">
+{% for day in week.days %}
+<div class="p-6 pt-3 my-2 w-72 mr-4 bg-white text-sm rounded-xl shadow-lg items-center">
+    <div class="pb-2">{{ day.day }}</div>
+    <div class="text-l font-bold text-black">{{day.recipe.id}} – {{ day.recipe.title }}</div>
+    <p class="text-sm text-slate-500">
+    {% for ingredient in day.recipe.ingredients.all %}
+    <span>{{ ingredient }}{% if not forloop.last %},{% endif %}</span>
+    {% endfor %}
+    </p>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endfor %}
+
+</body>
+</html>
