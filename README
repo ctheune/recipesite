@@ -8,4 +8,4 @@ Regenerate tailwind.css:
 Run in development mode:
 
 
-  DJANGO_SETTINGS_MODULE=recipesite.dev_settings bin/python manage.py runserver
+  DJANGO_SETTINGS_MODULE=menage.dev_settings bin/python manage.py runserver
