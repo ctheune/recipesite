@@ -24,7 +24,7 @@ SECRET_KEY = 'ZW4C4WEXDTET4J5BHOO5GZDRIJF3U2D7G85I29QSJKOSY1V179'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['menage.theune.cc']
+ALLOWED_HOSTS = ['menage.theune.cc', 'localhost']
 
 # Application definition
 
@@ -102,6 +102,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATIC_ROOT = "/home/ctheune/recipesite/static/"
 STATIC_URL = 'static/'
 
 # Default primary key field type
@@ -112,3 +113,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = False
+
+
+CSRF_TRUSTED_ORIGINS = ['https://menage.theune.cc']
