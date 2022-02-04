@@ -26,7 +26,7 @@ class IndexView(generic.TemplateView):
         recipes = list(Recipe.objects.order_by('id').all())
 
         weeks_since_epoch = (datetime.date.today() - EPOCH).days / 7
-        current_week = int(weeks_since_epoch) % (len(recipes) / 7) + 1
+        current_week = int(int(weeks_since_epoch) % (len(recipes) / 7)) + 1
         context['current_week'] = current_week
         context['weeks'] = []
         week = None
