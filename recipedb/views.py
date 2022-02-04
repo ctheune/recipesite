@@ -11,7 +11,7 @@ DAY_MAPPING = {
     5: 'Samstag',
     6: 'Sonntag'}
 
-EPOCH = datetime.date(2018, 1, 8)  # First week 1
+EPOCH = datetime.date(2018, 1, 4)  # First week 1
 
 
 class IndexView(generic.TemplateView):
@@ -25,8 +25,8 @@ class IndexView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         recipes = list(Recipe.objects.order_by('id').all())
 
-        current_week = int(
-            (datetime.date.today() - EPOCH).days % (len(recipes) / 7)) + 1
+        weeks_since_epoch = (datetime.date.today() - EPOCH).days / 7
+        current_week = int(weeks_since_epoch) % (len(recipes) / 7) + 1
         context['current_week'] = current_week
         context['weeks'] = []
         week = None
