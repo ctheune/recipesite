@@ -12,16 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from .settings_common import *
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "ZW4C4WEXDTET4J5BHOO5GZDRIJF3U2D7G85I29QSJKOSY1V179"
+SECRET_KEY = "django-insecure-3r7ejk)=-hq(26%n8=7wyax)%dm55(5fa$pb@7g-vnv1ph@5t_"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["menage.theune.cc", "localhost"]
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = False
-CSRF_TRUSTED_ORIGINS = ["https://menage.theune.cc"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "menage.theune.cc"]
