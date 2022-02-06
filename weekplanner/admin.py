@@ -36,12 +36,11 @@ class DayInline(admin.StackedInline):
     model = Day
     extra = 7
     formset = DayFormSet
+    autocomplete_fields = ["dinner"]
 
 
 class WeekAdmin(admin.ModelAdmin):
     inlines = [DayInline]
-
-    search_fields = ["question_text"]
 
     list_display = ("first_day", "last_day")
 
