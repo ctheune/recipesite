@@ -37,7 +37,9 @@ class Day(models.Model):
     a field for manual annotations of special events.
     """
 
-    week = models.ForeignKey("Week", on_delete=models.CASCADE, related_name="days")
+    week = models.ForeignKey(
+        "Week", on_delete=models.CASCADE, related_name="days"
+    )
 
     day = models.DateField("Datum")
 
@@ -46,6 +48,9 @@ class Day(models.Model):
     )
 
     note = models.CharField("Notiz", max_length=200, null=True, blank=True)
+
+    class Meta:
+        ordering = ["day"]
 
     def __str__(self):
         return f"Tag {self.day}"
