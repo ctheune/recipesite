@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import date, timedelta
 
 from django.contrib import admin
 from django.forms.models import BaseInlineFormSet
@@ -13,7 +13,12 @@ class DayFormSet(BaseInlineFormSet):
     def __init__(self, *args, **kwargs):
         super(DayFormSet, self).__init__(*args, **kwargs)
 
-        last_day = Day.objects.latest("day").day
+        last_day = date.min
+        if Day.objects.count():
+            last_day = Day.objects.latest("day").day
+
+        if last_day <= date.today():
+            last_day = date.today()
 
         self.initial = [
             {
