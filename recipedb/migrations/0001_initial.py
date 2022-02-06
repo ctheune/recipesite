@@ -8,35 +8,94 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Ingredient',
+            name="Ingredient",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.CharField(max_length=200, verbose_name='Zutat')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("description", models.CharField(max_length=200, verbose_name="Zutat")),
             ],
         ),
         migrations.CreateModel(
-            name='Recipe',
+            name="Recipe",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200, verbose_name='Titel')),
-                ('note', models.CharField(blank=True, max_length=200, null=True, verbose_name='Notiz')),
-                ('source', models.CharField(blank=True, max_length=200, null=True, verbose_name='Quelle')),
-                ('source_url', models.URLField(blank=True, null=True, verbose_name='Quelle (URL)')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200, verbose_name="Titel")),
+                (
+                    "note",
+                    models.CharField(
+                        blank=True, max_length=200, null=True, verbose_name="Notiz"
+                    ),
+                ),
+                (
+                    "source",
+                    models.CharField(
+                        blank=True, max_length=200, null=True, verbose_name="Quelle"
+                    ),
+                ),
+                (
+                    "source_url",
+                    models.URLField(blank=True, null=True, verbose_name="Quelle (URL)"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='IngredientUsage',
+            name="IngredientUsage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.CharField(blank=True, max_length=30, null=True, verbose_name='Menge')),
-                ('unit', models.CharField(blank=True, max_length=30, null=True, verbose_name='Einheit')),
-                ('ingredient', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='recipedb.ingredient')),
-                ('recipe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='ingredients', to='recipedb.recipe')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "amount",
+                    models.CharField(
+                        blank=True, max_length=30, null=True, verbose_name="Menge"
+                    ),
+                ),
+                (
+                    "unit",
+                    models.CharField(
+                        blank=True, max_length=30, null=True, verbose_name="Einheit"
+                    ),
+                ),
+                (
+                    "ingredient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="recipedb.ingredient",
+                    ),
+                ),
+                (
+                    "recipe",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="ingredients",
+                        to="recipedb.recipe",
+                    ),
+                ),
             ],
         ),
     ]

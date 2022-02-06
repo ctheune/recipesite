@@ -1,4 +1,4 @@
-from .models import Recipe
+from .models import Recipe, week_for_day, recipe_for_day
 from django.views import generic
 import datetime
 
@@ -12,8 +12,6 @@ DAY_MAPPING = {
     6: "Sonntag",
 }
 
-EPOCH = datetime.date(2018, 1, 4)  # First week 1
-
 
 class IndexView(generic.TemplateView):
     """The "infinite menu"."""
@@ -24,9 +22,7 @@ class IndexView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         recipes = list(Recipe.objects.order_by("id").all())
 
-        weeks_since_epoch = (datetime.date.today() - EPOCH).days / 7
-        current_week = int(int(weeks_since_epoch) % (len(recipes) / 7)) + 1
-        context["current_week"] = current_week
+        context["current_week"] = current_week = week_for_day(datetime.date.today())
         context["weeks"] = []
         week = None
         day = 0

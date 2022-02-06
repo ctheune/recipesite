@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ week }}{% endblock %}
+
+
+{% block body %}
+
+<div class="px-8 print:p-0">
+<div class="p-6 pt-3 my-2 w-72 mr-4 bg-white rounded-xl shadow-lg w-full print:shadow-none print:p-0">
+{% for day in week.days.all %}
+<div class="text-sm mb-12 border-t border-black {% if day.is_current %}bg-amber-200{% endif %}">
+    <div>{{ day.day|date:"l, j. F" }}</div>
+    {% if day.dinner %}
+    <h2 class="text-lg font-bold text-black">#{{day.dinner.id}} – {{ day.dinner.title }}</h2>
+    {% endif %}
+    {% if day.note %}
+    <p class="pt-2">{{ day.note }}</p>
+    {% endif %}
+</div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'tailwind.css' %}">
+</head>
+<body class="bg-slate-300">
+
+<nav class="bg-slate-800 px-6 py-3 shadow-lg text-sm text-slate-50 print:hidden">
+  <a href="{% url 'recipedb:index' %}">Unendlicher Speiseplan</a> |
+  <a href="{% url 'weekplanner:index' %}">Wochenpläne</a>
+</nav>
+
+
+<div class="p-8 print:hidden">
+  <h1 class="text-xl font-bold">{% block title %}Der unendliche Speiseplan{% endblock %}</h1>
+  {% block subtitle %}{% endblock %}
+</div>
+
+{% block body %}
+{% endblock %}
+
+</body>
+</html>

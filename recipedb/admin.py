@@ -12,6 +12,8 @@ class IngredientUsageInline(admin.StackedInline):
 class RecipeAdmin(admin.ModelAdmin):
     inlines = [IngredientUsageInline]
 
+    search_fields = ["title", "id"]
+
 
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Ingredient)

@@ -18,6 +18,9 @@ from django.urls import include, path
 from django.shortcuts import redirect
 
 urlpatterns = [
-    path('', lambda request: redirect('recipes/')),
-    path('recipes/', include('recipedb.urls')),
-    path('admin/', admin.site.urls), ]
+    path("", lambda request: redirect("recipes")),
+    path("accounts", include("django.contrib.auth.urls")),
+    path("recipes", include("recipedb.urls")),
+    path("plans/", include("weekplanner.urls")),
+    path("admin", admin.site.urls),
+]

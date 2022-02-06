@@ -1,18 +1,13 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-  {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'tailwind.css' %}">
-</head>
-<body class="bg-slate-300">
+{% block title %}Der unendliche Speiseplan{% endblock %}
 
-<div class="p-8">
-  <h1 class="text-xl font-bold">Der unendliche Speiseplan</h1>
-  <a class="text-xs" href="#week-{{current_week}}">→ Aktuelle Woche</a>
-</div>
+{% block subtitle %}
+<a class="text-xs" href="#week-{{current_week}}">→ Aktuelle Woche</a>
+{% endblock %}
+
+
+{% block body %}
 
 {% for week in weeks %}
 <div class="px-8 py-4 {% if week.is_current %}bg-amber-200{% endif %}">
@@ -31,7 +26,6 @@
 {% endfor %}
 </div>
 </div>
-{% endfor %}
 
-</body>
-</html>
+{% endfor %}
+{% endblock %}
