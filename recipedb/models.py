@@ -7,8 +7,8 @@ EPOCH = datetime.date(2018, 1, 1)  # First week 1
 
 def week_for_day(date):
     recipe_num = recipe_for_day(date)
-    weeks = int(recipe_num / 7)
-    return weeks
+    week = int(recipe_num / 7) + 1
+    return week
 
 
 def recipe_for_day(date):
