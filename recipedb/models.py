@@ -2,7 +2,7 @@ import datetime
 
 from django.db import models
 
-EPOCH = datetime.date(2018, 1, 4)  # First week 1
+EPOCH = datetime.date(2018, 1, 1)  # First week 1
 
 
 def week_for_day(date):
@@ -12,8 +12,8 @@ def week_for_day(date):
 
 
 def recipe_for_day(date):
-    days_since_epoch = (date - EPOCH).days + 1
-    return days_since_epoch % Recipe.objects.count()
+    days_since_epoch = (date - EPOCH).days
+    return (days_since_epoch % Recipe.objects.count()) + 1
 
 
 class Recipe(models.Model):
@@ -44,7 +44,9 @@ class IngredientUsage(models.Model):
     ingredient = models.ForeignKey("Ingredient", models.PROTECT)
 
     def __str__(self):
-        return " ".join(filter(bool, [self.amount, self.unit, str(self.ingredient)]))
+        return " ".join(
+            filter(bool, [self.amount, self.unit, str(self.ingredient)])
+        )
 
     @classmethod
     def from_shortcut(cls, recipe, shortcut):
