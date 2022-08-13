@@ -9,7 +9,7 @@ class WeeksView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["weeks"] = list(Week.objects.order_by("id").all())
+        context["weeks"] = list(Week.objects.order_by("-id").all())
         return context
 
 
