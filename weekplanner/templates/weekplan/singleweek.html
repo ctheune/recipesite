@@ -13,6 +13,9 @@
     {% if day.dinner %}
     <h2 class="text-lg font-bold text-black">#{{day.dinner.id}} – {{ day.dinner.title }}</h2>
     {% endif %}
+    {% if day.dinner_freestyle %}
+    <h2 class="text-lg font-bold text-black">{{day.dinner_freestyle}}</h2>
+    {% endif %}
     {% if day.note %}
     <p class="pt-2">{{ day.note }}</p>
     {% endif %}

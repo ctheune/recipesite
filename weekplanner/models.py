@@ -37,14 +37,16 @@ class Day(models.Model):
     a field for manual annotations of special events.
     """
 
-    week = models.ForeignKey(
-        "Week", on_delete=models.CASCADE, related_name="days"
-    )
+    week = models.ForeignKey("Week", on_delete=models.CASCADE, related_name="days")
 
     day = models.DateField("Datum")
 
     dinner = models.ForeignKey(
         "recipedb.Recipe", on_delete=models.SET_NULL, blank=True, null=True
+    )
+
+    dinner_freestyle = models.CharField(
+        "Dinner (alternativ)", max_length=200, null=True, blank=True
     )
 
     note = models.CharField("Notiz", max_length=200, null=True, blank=True)
